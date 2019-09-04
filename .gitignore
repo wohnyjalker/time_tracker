@@ -1,1 +1,7 @@
 venv/
+ignore/
+pyrebase.py
+notatki.py
+fireadmin_test.py
+getdata.py
+practice_firebase.py
