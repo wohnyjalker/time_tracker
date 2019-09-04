@@ -1,9 +1,15 @@
 # time_tracker  
 **INFO**  
 Script to see how i spent my time when i am learning how to code  
-This runs only on linux and requires python3, xdotool lib    
+This runs only on linux see reqirements.txt for dependencies
+
+**DONE**
++ integrated with firebase to store activiti titles and time
+
 **TODO**  
-database to put activities with time i spent on  
-simple flask or django site with bar charts
+- flask web page to get data from firebase
+- fancy charts with charts.js
+
+
 
 
