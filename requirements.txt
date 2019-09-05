@@ -39,7 +39,7 @@ pyasn1==0.4.7
 pyasn1-modules==0.2.6
 pycairo==1.18.1
 pycrypto==2.6.1
-pycryptodome==3.4.3
+pycryptodome==3.6.6
 pycups==1.9.73
 PyGObject==3.32.2
 PyICU==1.9.8
