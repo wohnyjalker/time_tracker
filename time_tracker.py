@@ -10,7 +10,7 @@ TERMINAL = 'zawrat@zawrat'
 PY_CHARM = 'PyCharm'
 
 
-class Activity(object):
+class Activity:
     """Activity class"""
     def __init__(self, window_title):
         #self.window_title = window_title
@@ -101,9 +101,6 @@ def find_activity():
     return window_name[0].decode('utf-8').rstrip()
 
 def start_firebase():
-#    cred = credentials.Certificate('ignore/time-ae333-firebase-adminsdk-7wtrj-2759f7cd9c.json')
-#    app = firebase_admin.initialize_app(cred)
-#    db = firestore.client()
     try:
         cred = credentials.Certificate('ignore/time-ae333-firebase-adminsdk-7wtrj-2759f7cd9c.json')
         app = firebase_admin.initialize_app(cred)
@@ -121,10 +118,19 @@ def get_titles():
         title_list.append(d.id)
     return title_list
 
+def date_to_db():
+    uid  = datetime.datetime.now().strftime("%Y-%m-%d")
+    data_ref = db.collection('days').document(uid)
+    data_ref.set({
+        u'date': uid,
+        })
+
 
 
 
 db = start_firebase()
+
+date_to_db()
 
 activities = get_titles()
 
@@ -149,18 +155,19 @@ try:
             elif last_activity.window_title not in activities:
                 last_activity.push_data()
             else:
-                print("f wyszlo z else")
+                print("error")
 
             activities.append(last_activity.window_title)
+            last_activity = new_activity
 
             #activities[-1].push_data()
             #last_activity.push_data()
 
-            print(f"[+]Previous activity added.")
-            last_activity = new_activity
+            #print(f"[+]Previous activity added.")
+            
 
         time.sleep(2)
 
 
 except KeyboardInterrupt:
-    print(f"\n{__file__} finish.")
+    print(f"\n{__file__} finished.")
